@@ -4,7 +4,7 @@
 
     <div class="form-group">
         <input class="form-control" placeholder="user name" autofocus formControlName="username">
-        <small  *ngIf="loginForm.get('username').errors?.required" class="text-danger d-block mt-2">
+        <small *ngIf="loginForm.get('username').errors?.required" class="text-danger d-block mt-2">
             User name is required!
         </small>
     </div>
