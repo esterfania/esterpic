@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { PicturesModule } from './modules/pictures/pictures.module'
 import { AppRoutingModule } from './app.routing.module';
 import { ErrorsModule } from './modules/errors/errors.module';
+import { HomeModule } from './modules/home/home.module';
 
 
 
@@ -16,6 +17,7 @@ import { ErrorsModule } from './modules/errors/errors.module';
     BrowserModule,
     PicturesModule,
     ErrorsModule,
+    HomeModule,
     AppRoutingModule
   ],
   providers: [],
