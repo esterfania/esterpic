@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-picture',
@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./picture.component.css']
 })
 export class PictureComponent implements OnInit {
-  url = 'https://pbs.twimg.com/media/EawVmcgXgAE2jDR?format=jpg&name=large';
-  alt = 'guia do mochileiro';
+  @Input() url: string;
+  @Input() description: string;
   constructor() { }
 
   ngOnInit() {
