@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
     templateUrl: './signin.component.html'
 })
 export class SigninComponent implements OnInit {
+    
     loginForm: FormGroup
 
     constructor(private formBuilder: FormBuilder) { }
@@ -14,7 +15,6 @@ export class SigninComponent implements OnInit {
             username: ['', [Validators.required]],
             password: ['', [Validators.required, Validators.minLength(8)]]
         });
-
     }
 
 }
