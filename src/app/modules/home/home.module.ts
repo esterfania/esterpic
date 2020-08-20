@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 
 import { SigninComponent } from "./signin/signin.component";
 import { MessageModule } from "src/app/shared";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     declarations: [SigninComponent],
@@ -11,6 +12,7 @@ import { MessageModule } from "src/app/shared";
         MessageModule,
         CommonModule,
         ReactiveFormsModule,
+        RouterModule
     ]
 })
 export class HomeModule {
