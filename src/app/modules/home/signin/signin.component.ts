@@ -19,14 +19,13 @@ export class SigninComponent implements OnInit {
     }
 
     login(): void {
-        let user: User = {
-            userName: this.loginForm.get('username').value,
-            password: this.loginForm.get('password').value
-        };
+        const username = this.loginForm.get('username').value;
+        const password = this.loginForm.get('password').value;
 
         this.authService
-            .authenticate(user)
-            .subscribe(res => console.log(res),
+            .authenticate(username, password)
+            .subscribe(
+                res => console.log(res),
                 err => {
                     console.log(err);
                     this.loginForm.reset()

@@ -1,4 +1,5 @@
-interface User {
-    userName: string,
-    password: string
+export interface User {
+    name: string,
+    email: string,
+    id: number
 }
