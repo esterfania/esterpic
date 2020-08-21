@@ -30,6 +30,11 @@ export class UserService {
         this.tokenService.removeToken();
         this.userSubject.next(null);
     }
+
+    isLogged() {
+        return this.tokenService.hasToken();
+    }
+
     private decodeAndNotify() {
         const token = this.tokenService.getToken();
         const user = jwt_decode(token) as User;

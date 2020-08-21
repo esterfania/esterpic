@@ -6,12 +6,14 @@ import { PicturesFormComponent } from './modules/pictures/picturesForm/pictures-
 import { NotFoundComponent } from './modules/errors/not-found/not-found.component';
 import { PicturesListResolver } from './modules/pictures/picutresList/resolver/pictures-list-resolver.resolver';
 import { SigninComponent } from './modules/home/signin/signin.component';
+import { AuthGuard } from './core/auth/auth.guard';
 
 
 const routes: Routes = [
     {
         path: '',
-        component: SigninComponent
+        component: SigninComponent,
+        canActivate:[AuthGuard]
     },
     {
         path: 'user/:userName',
