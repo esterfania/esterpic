@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { PicturesModule, ErrorsModule, HomeModule } from './modules/index';
-
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -16,6 +16,7 @@ import { PicturesModule, ErrorsModule, HomeModule } from './modules/index';
     PicturesModule,
     ErrorsModule,
     HomeModule,
+    CoreModule,
     AppRoutingModule
   ],
   providers: [],
