@@ -9,15 +9,9 @@ import { Observable } from "rxjs";
 })
 export class HeaderComponent {
     user$: Observable<User>;
-    user: User;
 
     constructor(private userService: UserService) {
-        this.getUser();
+        this.user$ = this.userService.getUser();
     }
 
-    getUser() {
-        this.user$ = this.userService.getUser();
-        this.user$
-            .subscribe(res => this.user = res);
-    }
 }
