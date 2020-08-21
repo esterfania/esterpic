@@ -7,17 +7,19 @@ import { NotFoundComponent } from './modules/errors/not-found/not-found.componen
 import { PicturesListResolver } from './modules/pictures/picutresList/resolver/pictures-list-resolver.resolver';
 import { SigninComponent } from './modules/home/signin/signin.component';
 import { AuthGuard } from './core/auth/auth.guard';
+import { UserGuard } from './core/user/user.guard';
 
 
 const routes: Routes = [
     {
         path: '',
         component: SigninComponent,
-        canActivate:[AuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: 'user/:userName',
         component: PicutresListComponent,
+        canActivate: [UserGuard],
         resolve: {
             pictures: PicturesListResolver
         }
