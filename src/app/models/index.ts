@@ -1,2 +1,1 @@
-export * from './Picture';
-export * from './User';
+export * from './picture';
