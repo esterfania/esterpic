@@ -5,9 +5,12 @@ import { CommonModule } from "@angular/common";
 import { SigninComponent } from "./signin/signin.component";
 import { MessageModule } from "src/app/shared";
 import { RouterModule } from "@angular/router";
+import { Signup } from "./signup/signup.component";
 
 @NgModule({
-    declarations: [SigninComponent],
+    declarations: [
+        SigninComponent,
+        Signup],
     imports: [
         MessageModule,
         CommonModule,
