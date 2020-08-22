@@ -28,7 +28,7 @@
         </app-message>
         <app-message *ngIf="form.get('userName').errors?.maxlength" text="Max length is 40">
         </app-message>
-        <app-message *ngIf="form.get('userName').errors?.pattern" text="Must be lower case">
+        <app-message *ngIf="form.get('userName').errors?.lowercase" text="Must be lower case">
         </app-message>
     </div>
 
