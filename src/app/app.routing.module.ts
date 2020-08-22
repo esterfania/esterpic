@@ -19,7 +19,6 @@ const routes: Routes = [
     {
         path: 'user/:userName',
         component: PicutresListComponent,
-        canActivate: [UserGuard],
         resolve: {
             pictures: PicturesListResolver
         }
