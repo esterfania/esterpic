@@ -10,7 +10,8 @@ import { PlatFormDetectorService } from "src/app/core";
 
 @Component({
     selector: 'app-signup',
-    templateUrl: 'signup.component.html'
+    templateUrl: 'signup.component.html',
+    providers: [UserNotTakenValidatorService]
 })
 export class Signup implements OnInit {
 
