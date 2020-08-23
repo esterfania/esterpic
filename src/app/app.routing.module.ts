@@ -14,15 +14,15 @@ import { HomeComponent } from './modules/home/home.component';
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent,
+        component: HomeComponent,        
+        canActivate: [AuthGuard],
         children: [{
             path: '',
-            component: SigninComponent,
-            canActivate: [AuthGuard]
+            component: SigninComponent
         },
         {
             path: 'signup',
-            component: Signup,
+            component: Signup
         }]
     },
     {

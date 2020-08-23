@@ -14,7 +14,7 @@ import { PlatFormDetectorService } from "src/app/core";
 })
 export class Signup implements OnInit {
 
-    private form: FormGroup;
+    form: FormGroup;
 
     @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
 
