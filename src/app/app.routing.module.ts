@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PicturesFormComponent } from './modules/pictures/picturesForm/pictures-form.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
     {
         path: 'user/:userName',      
         loadChildren: './modules/pictures/pictures.module#PicturesModule'
+    },
+    {
+        path: 'p/add',      
+        component: PicturesFormComponent
     },
     {
         path: '**',
