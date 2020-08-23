@@ -6,6 +6,7 @@ import { UserNotTakenValidatorService } from "./user-not-taken.validator.service
 import { NewUser } from "./new-user";
 import { SignupService } from "./signup.service";
 import { Router } from "@angular/router";
+import { PlatFormDetectorService } from "src/app/core";
 
 @Component({
     selector: 'app-signup',
@@ -21,7 +22,8 @@ export class Signup implements OnInit {
         private formBuilder: FormBuilder,
         private userNotTakenValidatorService: UserNotTakenValidatorService,
         private signupService: SignupService,
-        private router: Router) { }
+        private router: Router,
+        private platformDetectorService: PlatFormDetectorService) { }
 
     ngOnInit(): void {
         this.form = this.formBuilder.group({
@@ -61,7 +63,8 @@ export class Signup implements OnInit {
                         Validators.maxLength(14)
                     ]
                 ]
-        })
+        });
+        this.setFocus();
     }
 
     signup() {
@@ -74,6 +77,9 @@ export class Signup implements OnInit {
                 },
                 err => console.log(err)
             );
-
+    }
+    setFocus(): void {
+        this.platformDetectorService.isPlatformBrowser()
+            && this.emailInput.nativeElement.focus();
     }
 }

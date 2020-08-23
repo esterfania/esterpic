@@ -24,6 +24,7 @@ export class SigninComponent implements OnInit {
             username: ['', [Validators.required]],
             password: ['', [Validators.required]]
         });
+        this.setFocus()
     }
 
     login(): void {
@@ -38,8 +39,12 @@ export class SigninComponent implements OnInit {
                 err => {
                     console.log(err);
                     this.loginForm.reset();
-                    this.platFormDetectorService.isPlatformBrowser() &&
-                        this.userNameInput.nativeElement.focus();
+                    this.setFocus()
                 });
+    }
+
+    setFocus(): void {
+        this.platFormDetectorService.isPlatformBrowser() &&
+            this.userNameInput.nativeElement.focus();
     }
 }
