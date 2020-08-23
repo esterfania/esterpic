@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { PicturesService } from '../picture/picturesService/pictures.service';
 
 @Component({
   selector: 'app-pictures-form',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PicturesFormComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  file: File;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private picturesService: PicturesService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      file: ['', [Validators.required]],
+      description: ['', [Validators.maxLength(300)]],
+      allowComments: [true]
+    })
   }
 
+  upload() {
+    const description = this.form.get('description').value;
+    const allowComments = this.form.get('allowComments').value;
+    this.picturesService
+    .upload(description, allowComments, this.file)
+    .subscribe(() => this.router.navigate(['']));
+
+  }
 }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PicutresListComponent } from './picutresList/picutres-list.component';
 import { PicturesListResolver } from './picutresList/resolver/pictures-list-resolver.resolver';
+import { PicturesFormComponent } from './picturesForm/pictures-form.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,11 @@ const routes: Routes = [
         component: PicutresListComponent,
         resolve: {
             pictures: PicturesListResolver
-        }
+        },
+        children: [{
+            path: 'p/add',
+            component: PicturesFormComponent
+        }]
     }
 ];
 

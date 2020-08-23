@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { CoreModule } from './core/core.module';
+import { PicturesFormModule } from './modules/pictures/picturesForm/pictures-form.module';
 
 
 @NgModule({
@@ -13,8 +14,9 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    CoreModule,    
+    CoreModule,
     HttpClientModule,
+    PicturesFormModule,
     AppRoutingModule
   ],
   providers: [],

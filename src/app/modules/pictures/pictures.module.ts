@@ -5,13 +5,11 @@ import { PicturesFormModule } from './picturesForm/pictures-form.module';
 import { PicturesListModule } from './picutresList/pictures-list.module';
 import { PicturesRoutingModule } from './pictures.routing.module';
 
-
-
 @NgModule({
   imports: [
     PictureModule,
+    PicturesListModule,    
     PicturesFormModule,
-    PicturesListModule,
     PicturesRoutingModule
   ]
 })
