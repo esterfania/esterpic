@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { PicturesFormComponent } from "./pictures-form.component";
 import { MessageModule } from 'src/app/shared';
+import { PictureModule } from '../picture/picture.module';
 
 @NgModule({
     declarations: [PicturesFormComponent],
@@ -13,6 +14,7 @@ import { MessageModule } from 'src/app/shared';
         MessageModule,
         ReactiveFormsModule,       
         FormsModule,
+        PictureModule,
         RouterModule
     ]
 })

@@ -13,6 +13,7 @@ export class PicturesFormComponent implements OnInit {
 
   form: FormGroup;
   file: File;
+  preview: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,8 +33,16 @@ export class PicturesFormComponent implements OnInit {
     const description = this.form.get('description').value;
     const allowComments = this.form.get('allowComments').value;
     this.picturesService
-    .upload(description, allowComments, this.file)
-    .subscribe(() => this.router.navigate(['']));
+      .upload(description, allowComments, this.file)
+      .subscribe(() => this.router.navigate(['']));
 
   }
+
+  handleFile(file: File) {
+    this.file = file;
+    const reader = new FileReader();
+    reader.onload = (event: any) => this.preview = event.target.result;
+    reader.readAsDataURL(file);
+  }
+
 }
