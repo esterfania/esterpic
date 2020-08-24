@@ -19,11 +19,6 @@ const routes: Routes = [
         loadChildren: './modules/pictures/pictures.module#PicturesModule'
     },
     {
-        path: 'p/add',      
-        canActivate:[AuthGuard],
-        component: PicturesFormComponent
-    },
-    {
         path: '**',
         loadChildren: './modules/errors/errors.module#ErrorsModule'
     }

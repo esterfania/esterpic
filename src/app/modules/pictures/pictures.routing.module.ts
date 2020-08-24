@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PicutresListComponent } from './picutresList/picutres-list.component';
 import { PicturesListResolver } from './picutresList/resolver/pictures-list-resolver.resolver';
+import { PicturesFormComponent } from './picturesForm/pictures-form.component';
+import { AuthGuard } from 'src/app/core/auth/auth.guard';
 
 
 const routes: Routes = [
@@ -11,7 +13,12 @@ const routes: Routes = [
         component: PicutresListComponent,
         resolve: {
             pictures: PicturesListResolver
-        }
+        }        
+    },       
+    {
+        path: 'p/add',
+        canActivate: [AuthGuard],
+        component: PicturesFormComponent
     }
 ];
 
