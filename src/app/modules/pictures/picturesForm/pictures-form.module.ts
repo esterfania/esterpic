@@ -6,13 +6,15 @@ import { RouterModule } from '@angular/router';
 import { PicturesFormComponent } from "./pictures-form.component";
 import { MessageModule } from 'src/app/shared';
 import { PictureModule } from '../picture/picture.module';
+import { ImmediateClickModule } from 'src/app/shared/directives/immediate-click/immediate-click.module';
 
 @NgModule({
     declarations: [PicturesFormComponent],
     imports: [
         CommonModule,
         MessageModule,
-        ReactiveFormsModule,       
+        ImmediateClickModule,
+        ReactiveFormsModule,
         FormsModule,
         PictureModule,
         RouterModule

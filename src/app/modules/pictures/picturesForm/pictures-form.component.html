@@ -2,7 +2,7 @@
   <form class="row" [formGroup]="form" (submit)="upload()">
     <div class="col-md-6 text-center">
       <div class="form-group" *ngIf="!preview; else previewImage">
-        <button type="button" (click)="inputFile.click()" class="btn btn-primary">
+        <button immediateClick type="button" (click)="inputFile.click()" class="btn btn-primary">
             <i class="fa fa-image fa-4x align-middle"></i>
         </button>
         <input 
@@ -19,13 +19,13 @@
           >
         </app-message>
       </div>
+      <ng-template #previewImage>
+        <div class="text-center">
+          <app-picture [url]="preview" description="Preview">
+          </app-picture>
+       </div>
+      </ng-template>
     </div>
-    <ng-template #previewImage>
-      <div class="text-center">
-        <app-picture [url]="preview" title="Preview">
-        </app-picture>
-     </div>
-    </ng-template>
     <div class="col-md-6">
       <div class="form-group">
         <textarea 
@@ -49,7 +49,7 @@
         Upload
       </button>
 
-      <a class="btn btn-secondary btn-block">Cancel</a>
+      <a class="btn btn-secondary btn-block" [routerLink]="['']">Cancel</a>
     </div>
   </form>
 </div>
