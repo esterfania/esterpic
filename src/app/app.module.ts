@@ -1,12 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { PicturesModule } from './modules/pictures/pictures.module'
 import { AppRoutingModule } from './app.routing.module';
-import { ErrorsModule } from './modules/errors/errors.module';
-import { HomeModule } from './modules/home/home.module';
-
+import { CoreModule } from './core/core.module';
 
 
 @NgModule({
@@ -15,9 +13,8 @@ import { HomeModule } from './modules/home/home.module';
   ],
   imports: [
     BrowserModule,
-    PicturesModule,
-    ErrorsModule,
-    HomeModule,
+    CoreModule,    
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
