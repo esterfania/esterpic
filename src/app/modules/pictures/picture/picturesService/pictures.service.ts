@@ -49,9 +49,15 @@ export class PicturesService {
     return this.http.get<PictureComment[]>(
       API + '/photos/' + pictureId + '/comments');
   }
+
   addComments(pictureId: number, commentText: string) {
     return this.http.post(
       API + '/photos/' + pictureId + '/comments',
       { commentText });
+  }
+
+  removePicture(pictureId: number) {
+    return this.http
+      .delete(API + '/photos/' + pictureId);
   }
 }

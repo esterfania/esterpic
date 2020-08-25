@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Observable } from "rxjs";
 import { switchMap, tap } from 'rxjs/operators';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { PicturesService } from "../../picture/picturesService/pictures.service";
 import { PictureComment } from "src/app/models";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
     selector: 'app-picture-comments',
@@ -21,7 +21,7 @@ export class PictureCommentsComponent implements OnInit {
         private formBuilder: FormBuilder) { }
 
     ngOnInit(): void {
-        this.comments$  = this.pictureService.getComments(this.pictureId);
+        this.comments$ = this.pictureService.getComments(this.pictureId);
         this.form = this.formBuilder
             .group({
                 comment: ['', [Validators.required, Validators.maxLength(300)]]
@@ -34,6 +34,7 @@ export class PictureCommentsComponent implements OnInit {
             .addComments(this.pictureId, comment)
             .pipe(switchMap(() => this.pictureService.getComments(this.pictureId)))
             .pipe(tap(() => this.form.reset()))
-
     }
+
+   
 }
