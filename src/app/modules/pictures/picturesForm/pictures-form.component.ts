@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { PicturesService } from '../picture/picturesService/pictures.service';
+import { UserService } from 'src/app/core/user/user.service';
+import { AlertService } from 'src/app/shared/components/alert/alert.service';
 
 @Component({
   selector: 'app-pictures-form',
@@ -18,7 +20,9 @@ export class PicturesFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private picturesService: PicturesService,
-    private router: Router
+    private router: Router,
+    private userService: UserService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -34,7 +38,14 @@ export class PicturesFormComponent implements OnInit {
     const allowComments = this.form.get('allowComments').value;
     this.picturesService
       .upload(description, allowComments, this.file)
-      .subscribe(() => this.router.navigate(['']));
+      .subscribe(() => {
+        this.alertService.success('Upload complete!', true)
+        this.router.navigate(['/user', this.userService.getUserName()])
+      },
+        err => {
+          console.log(err);
+          this.alertService.danger('An error occurred, please try again later!')
+        });
 
   }
 
