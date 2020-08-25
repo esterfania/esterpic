@@ -24,6 +24,9 @@ export class PictureDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.pictureId = this.activatedRoute.snapshot.params.pictureId;
         this.pictures$ = this.pictureService.findById(this.pictureId);
+        this.pictures$
+        .subscribe(()=>{},
+        err => this.router.navigate(['not-found']))
     }
     remove() {
         this.pictureService

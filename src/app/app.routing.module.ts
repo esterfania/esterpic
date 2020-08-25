@@ -11,16 +11,20 @@ const routes: Routes = [
         redirectTo: 'home'
     },
     {
-        path:'home',
+        path: 'home',
         loadChildren: './modules/home/home.module#HomeModule'
     },
     {
-        path: 'user/:userName',      
+        path: 'user/:userName',
         loadChildren: './modules/pictures/pictures.module#PicturesModule'
     },
     {
-        path: '**',
+        path: 'not-found',
         loadChildren: './modules/errors/errors.module#ErrorsModule'
+    },
+    {
+        path: '**',
+        redirectTo: 'not-found'
     }
 ];
 
