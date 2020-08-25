@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Picture } from 'src/app/models/index';
+import { PictureComment } from 'src/app/models/picture-comment';
 
 const API = 'http://localhost:3000';
 
@@ -40,7 +41,17 @@ export class PicturesService {
       .post(API + '/photos/upload', formData);
   }
 
-  findById(id: string): Observable<Picture> {
-    return this.http.get<Picture>(API + '/photos/'+ id);
+  findById(pictureId: number): Observable<Picture> {
+    return this.http.get<Picture>(API + '/photos/' + pictureId);
+  }
+
+  getComments(pictureId: number) {
+    return this.http.get<PictureComment[]>(
+      API + '/photos/' + pictureId + '/comments');
+  }
+  addComments(pictureId: number, commentText: string) {
+    return this.http.post(
+      API + '/photos/' + pictureId + '/comments',
+      { commentText });
   }
 }
