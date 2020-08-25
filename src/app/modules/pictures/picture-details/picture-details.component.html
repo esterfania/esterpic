@@ -9,7 +9,7 @@
           <p class="text-left break-word">{{picture.description}}</p>
           <div class="text-left mb-4">
             <i class="fa fa-comment-o fa-2x mr-2 ml-2"></i>{{ picture.comments }}
-            <button (click)="remove()" class="btn  btn-light fa fa-trash-o fa-2x pull-right"></button>
+            <button ownerOnly [ownedPicture]="picture"  (click)="remove()" class="btn  btn-light fa fa-trash-o fa-2x pull-right"></button>
           </div>
           <hr>
         </small>
