@@ -1,1 +1,24 @@
- <span>Is work!</span>
+<div class="container bg-white border" *ngIf="(pictures$ | async ) as picture">
+    <div class="row">
+      <div class="col-lg-8">
+        <app-picture [url]="picture.url" [description]="picture.description"></app-picture>
+      </div>
+  
+      <div class="col-lg-4 p-4">
+        <small>
+          <p class="text-left break-word">{{picture.description}}</p>
+          <hr>
+        </small>
+        <div class="mt-4">
+          <form>
+            <div class="input-group">
+              <textarea class="form-control"></textarea>
+              <div class="input-group-append">
+                <button class="btn btn-primary pull-left">Publish</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

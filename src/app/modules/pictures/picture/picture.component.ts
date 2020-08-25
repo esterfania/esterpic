@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 const URL = 'http://localhost:3000/imgs/';
 
@@ -7,7 +7,7 @@ const URL = 'http://localhost:3000/imgs/';
   templateUrl: './picture.component.html',
   styleUrls: ['./picture.component.css']
 })
-export class PictureComponent implements OnInit {
+export class PictureComponent {
 
   _url: string = '';
 
@@ -28,7 +28,6 @@ export class PictureComponent implements OnInit {
   constructor() { }
 
 
-  ngOnInit() {
-  }
+
 
 }

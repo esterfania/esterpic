@@ -4,6 +4,7 @@
 <ol class="cards list-unstyled">
   <li *ngFor="let cols of rows" class="row no-gutters">
     <div *ngFor="let photo of cols" class="col-4" darkOnHover brightness="90%">
+     <a [routerLink]="['p', photo.id]">
       <app-card [title]="">
         <app-picture [url]="photo.url" [description]="photo.description">
         </app-picture>
@@ -12,6 +13,7 @@
           <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2"></i>{{ photo.comments }}
         </div>
       </app-card>
+    </a>
     </div>
   </li>
 </ol>

@@ -1,15 +1,24 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { PicturesService } from "../picture/picturesService/pictures.service";
+import { Picture } from "src/app/models";
+import { Observable } from "rxjs";
 
 @Component({
-    templateUrl: './picture-details.component.html'
+    templateUrl: './picture-details.component.html',
+    styleUrls: ['./picture-details.component.css']
 })
 export class PictureDetailsComponent implements OnInit {
 
-    constructor(activatedRoute: ActivatedRoute) { 
-        console.log(activatedRoute.snapshot.params.pictureId)
-    }
+    pictures$: Observable<Picture>;
+
+    constructor(
+        private activatedRoute: ActivatedRoute,
+        private pictureService: PicturesService) { }
+
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
+        const id = this.activatedRoute.snapshot.params.pictureId;
+        this.pictures$ = this.pictureService.findById(id);
     }
+
 }
