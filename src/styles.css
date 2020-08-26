@@ -1,3 +1,11 @@
 body {
     padding-top: 60px;
 }
+.break-word {
+    word-break: break-all;
+}
+
+.comment-list {
+    height: 35vh;
+    overflow-y: scroll;
+}

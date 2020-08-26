@@ -16,7 +16,6 @@ import { PicturesFormModule } from './modules/pictures/picturesForm/pictures-for
     BrowserModule,
     CoreModule,
     HttpClientModule,
-    PicturesFormModule,
     AppRoutingModule
   ],
   providers: [],

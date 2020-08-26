@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PicturesFormComponent } from './modules/pictures/picturesForm/pictures-form.component';
-
 
 const routes: Routes = [
     {
@@ -10,20 +8,20 @@ const routes: Routes = [
         redirectTo: 'home'
     },
     {
-        path:'home',
+        path: 'home',
         loadChildren: './modules/home/home.module#HomeModule'
     },
     {
-        path: 'user/:userName',      
+        path: 'user/:userName',
         loadChildren: './modules/pictures/pictures.module#PicturesModule'
     },
     {
-        path: 'p/add',      
-        component: PicturesFormComponent
+        path: 'not-found',
+        loadChildren: './modules/errors/errors.module#ErrorsModule'
     },
     {
         path: '**',
-        loadChildren: './modules/errors/errors.module#ErrorsModule'
+        redirectTo: 'not-found'
     }
 ];
 

@@ -32,8 +32,12 @@ export class PicutresListComponent implements OnInit, OnDestroy {
   }
 
   getPictures(): void {
-    this.userName = this.activatedRoute.snapshot.params.userName;
-    this.pictures = this.activatedRoute.snapshot.data.pictures;
+    this.activatedRoute.params
+      .subscribe(res => {
+        this.userName = res.userName;
+        this.pictures = this.activatedRoute.snapshot.data.pictures;
+      });
+
     this.debounce
       .pipe(debounceTime(300))
       .subscribe(filter => this.filter = filter);

@@ -1,19 +1,20 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-const URL = 'http://localhost:3000/imgs/';
+import { environment } from '../../../../environments/environment'
+const API = environment.apiUrl + '/imgs/';
 
 @Component({
   selector: 'app-picture',
   templateUrl: './picture.component.html',
   styleUrls: ['./picture.component.css']
 })
-export class PictureComponent implements OnInit {
+export class PictureComponent {
 
   _url: string = '';
 
   @Input() set url(url: string) {
     if (!url.startsWith('data')) {
-      this._url = URL + url;
+      this._url = API + url;
     } else {
       this._url = url;
     }
@@ -28,7 +29,6 @@ export class PictureComponent implements OnInit {
   constructor() { }
 
 
-  ngOnInit() {
-  }
+
 
 }

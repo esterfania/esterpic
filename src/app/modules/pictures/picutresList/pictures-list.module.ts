@@ -8,6 +8,7 @@ import { FilterByDescription } from "./pipes/filter-by-description.pipe";
 import { PicutresListComponent } from "./picutres-list.component";
 import { SearchComponent } from "./search/search.component";
 import { CardModule, DarkOnHoverModule } from "src/app/shared";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { CardModule, DarkOnHoverModule } from "src/app/shared";
             CommonModule,
             PictureModule,
             CardModule,
-            DarkOnHoverModule
+            DarkOnHoverModule,
+            RouterModule
         ]
 })
 export class PicturesListModule { }

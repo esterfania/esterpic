@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Picture } from 'src/app/models/index';
+import { PictureComment } from 'src/app/models/picture-comment';
+import { environment } from '../../../../../environments/environment'
 
-const API = 'http://localhost:3000';
+const API = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +38,40 @@ export class PicturesService {
     formData.append('description', description);
     formData.append('allowComments', allowComments ? 'true' : 'false');
     formData.append('imageFile', file);
-    
+
     return this.http
       .post(API + '/photos/upload', formData);
+  }
+
+  findById(pictureId: number): Observable<Picture> {
+    return this.http.get<Picture>(API + '/photos/' + pictureId);
+  }
+
+  getComments(pictureId: number) {
+    return this.http.get<PictureComment[]>(
+      API + '/photos/' + pictureId + '/comments');
+  }
+
+  addComments(pictureId: number, commentText: string) {
+    return this.http.post(
+      API + '/photos/' + pictureId + '/comments',
+      { commentText });
+  }
+
+  removePicture(pictureId: number) {
+    return this.http
+      .delete(API + '/photos/' + pictureId);
+  }
+
+  like(pictureId: number) {
+
+    return this.http.post(API + '/photos/' + pictureId + '/like',
+      {},
+      { observe: 'response' })
+      .pipe(map(res => true))
+      .pipe(catchError(err => {
+        return err.status == '304' ? of(false) : throwError(err)
+      }));
+
   }
 }
