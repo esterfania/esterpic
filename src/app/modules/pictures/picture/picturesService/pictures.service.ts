@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Picture } from 'src/app/models/index';
@@ -59,5 +60,17 @@ export class PicturesService {
   removePicture(pictureId: number) {
     return this.http
       .delete(API + '/photos/' + pictureId);
+  }
+
+  like(pictureId: number) {
+
+    return this.http.post(API + '/photos/' + pictureId + '/like',
+      {},
+      { observe: 'response' })
+      .pipe(map(res => true))
+      .pipe(catchError(err => {
+        return err.status == '304' ? of(false) : throwError(err)
+      }));
+
   }
 }
