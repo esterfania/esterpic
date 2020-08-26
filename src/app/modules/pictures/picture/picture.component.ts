@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
-const URL = 'http://localhost:3000/imgs/';
+import { environment } from '../../../../environments/environment'
+const API = environment.apiUrl + '/imgs/';
 
 @Component({
   selector: 'app-picture',
@@ -13,7 +14,7 @@ export class PictureComponent {
 
   @Input() set url(url: string) {
     if (!url.startsWith('data')) {
-      this._url = URL + url;
+      this._url = API + url;
     } else {
       this._url = url;
     }

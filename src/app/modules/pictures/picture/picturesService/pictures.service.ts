@@ -5,8 +5,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Picture } from 'src/app/models/index';
 import { PictureComment } from 'src/app/models/picture-comment';
+import { environment } from '../../../../../environments/environment'
 
-const API = 'http://localhost:3000';
+const API = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
