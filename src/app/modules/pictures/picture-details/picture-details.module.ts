@@ -8,6 +8,7 @@ import { PictureModule } from "../picture/picture.module";
 import { PictureCommentsComponent } from "./picture-comments/picture-comments.component";
 import { MessageModule } from "src/app/shared";
 import { OwnerOnlyDirective } from "./owner-only/owner-only.directive";
+import { ShowIfLoggedModule } from "src/app/shared/directives/show-if-logged/show-if-logged.module";
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { OwnerOnlyDirective } from "./owner-only/owner-only.directive";
         PictureModule,
         RouterModule,
         ReactiveFormsModule,
-        MessageModule
+        MessageModule,
+        ShowIfLoggedModule
     ],
     exports: [
         PictureDetailsComponent,
