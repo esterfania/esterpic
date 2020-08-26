@@ -35,6 +35,4 @@ export class PictureCommentsComponent implements OnInit {
             .pipe(switchMap(() => this.pictureService.getComments(this.pictureId)))
             .pipe(tap(() => this.form.reset()))
     }
-
-   
 }

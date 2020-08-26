@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
+import { switchMap } from "rxjs/operators";
 
 import { PicturesService } from "../picture/picturesService/pictures.service";
 import { Picture } from "src/app/models";
@@ -25,8 +26,8 @@ export class PictureDetailsComponent implements OnInit {
         this.pictureId = this.activatedRoute.snapshot.params.pictureId;
         this.pictures$ = this.pictureService.findById(this.pictureId);
         this.pictures$
-        .subscribe(()=>{},
-        err => this.router.navigate(['not-found']))
+            .subscribe(() => { },
+                err => this.router.navigate(['not-found']))
     }
     remove() {
         this.pictureService
@@ -41,5 +42,21 @@ export class PictureDetailsComponent implements OnInit {
                     console.log(err)
                 }
             )
+    }
+
+    like(picture: Picture) {
+
+        this.pictures$ = this.pictureService
+            .like(picture.id)
+            .pipe(switchMap(() => this.pictureService.findById(picture.id)));
+        
+        //the same result
+        // this.pictureService
+        //     .like(picture.id)
+        //     .subscribe(liked => {
+        //         if (liked)
+        //             this.pictures$ = this.pictureService.findById(picture.id)
+        //     })
+
     }
 }
