@@ -3,38 +3,25 @@
     <div class="col-md-6 text-center">
       <div class="form-group" *ngIf="!preview; else previewImage">
         <button immediateClick type="button" (click)="inputFile.click()" class="btn btn-primary">
-            <i class="fa fa-image fa-4x align-middle"></i>
+          <i class="fa fa-image fa-4x align-middle"></i>
         </button>
-        <input 
-          #inputFile
-          hidden
-          formControlName="file" 
-          type="file" 
-          accept="image/*"        
-          (change)="handleFile(file = $event.target.files[0])"
-          >
-        <app-message 
-          text="Please, select a photo" 
-          *ngIf="form.get('file').errors?.required"
-          >
+        <input #inputFile hidden formControlName="file" type="file" accept="image/*"
+          (change)="handleFile(file = $event.target.files[0])">
+        <app-message text="Please, select a photo" *ngIf="form.get('file').errors?.required">
         </app-message>
       </div>
       <ng-template #previewImage>
         <div class="text-center">
           <app-picture [url]="preview" description="Preview">
           </app-picture>
-       </div>
+        </div>
       </ng-template>
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <textarea 
-          formControlName="description"
-          class="form-control form-control-sm" 
+        <textarea formControlName="description" class="form-control form-control-sm"
           placeholder="photo description"></textarea>
-        <app-message 
-          text="Maximun size allowed is 300" 
-          *ngIf="form.get('description').errors?.maxlength">
+        <app-message text="Maximun size allowed is 300" *ngIf="form.get('description').errors?.maxlength">
         </app-message>
       </div>
 
@@ -45,11 +32,18 @@
         </label>
       </div>
 
-      <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-block">
-        Upload
-      </button>
+      <div *ngIf="!percentDone; else percent;">
+        <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-block">
+          Upload
+        </button>
 
-      <a class="btn btn-secondary btn-block" [routerLink]="['']">Cancel</a>
+        <a class="btn btn-secondary btn-block" [routerLink]="['']">Cancel</a>
+      </div>
+      <ng-template #percent>
+        <div class="text-center display-4">
+          Uploading {{percentDone}} %
+        </div>
+      </ng-template>
     </div>
   </form>
 </div>
