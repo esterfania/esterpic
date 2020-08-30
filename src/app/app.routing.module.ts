@@ -16,12 +16,12 @@ const routes: Routes = [
         loadChildren: './modules/pictures/pictures.module#PicturesModule'
     },
     {
-        path: 'not-found',
+        path: 'error',
         loadChildren: './modules/errors/errors.module#ErrorsModule'
     },
     {
         path: '**',
-        redirectTo: 'not-found'
+        redirectTo: 'error'
     }
 ];
 

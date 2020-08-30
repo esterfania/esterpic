@@ -4,6 +4,7 @@ import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 
 import { UserService } from "src/app/core/user/user.service";
 import { ServerLogService } from "./server-log.service";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
@@ -14,6 +15,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         const location = this.injector.get(LocationStrategy);
         const userService = this.injector.get(UserService)
         const serverLogerService = this.injector.get(ServerLogService);
+        const router = this.injector.get(Router);
 
         const url = location instanceof PathLocationStrategy ?
             location.path() : '';
@@ -21,7 +23,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         const message = error instanceof Error ?
             error.message :
             error.toString();
-
+            router.navigate(['/error/error']);
         StackTrace
             .fromError(error)
             .then(stackFrames => {
