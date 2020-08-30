@@ -12,7 +12,8 @@
 
     <div class="form-group">
         <input formControlName="fullName" type="text" placeholder="full name" class="form-control">
-        <app-message *ngIf="signUpForm.get('fullName').errors?.required && form.submitted" text="Full Name is required!">
+        <app-message *ngIf="signUpForm.get('fullName').errors?.required && form.submitted"
+            text="Full Name is required!">
         </app-message>
         <app-message *ngIf="signUpForm.get('fullName').errors?.minlength && form.submitted" text="Min length is 2">
         </app-message>
@@ -22,7 +23,8 @@
 
     <div class="form-group">
         <input formControlName="userName" type="text" placeholder="user name" class="form-control">
-        <app-message *ngIf="signUpForm.get('userName').errors?.required && form.submitted" text="User Name is required!">
+        <app-message *ngIf="signUpForm.get('userName').errors?.required && form.submitted"
+            text="User Name is required!">
         </app-message>
         <app-message *ngIf="signUpForm.get('userName').errors?.minlength && form.submitted" text="Min length is 2">
         </app-message>
@@ -43,8 +45,10 @@
         </app-message>
         <app-message *ngIf="signUpForm.get('password').errors?.maxlength && form.submitted" text="Max length is 14">
         </app-message>
+        <app-message *ngIf="signUpForm.errors?.userNamePassword && form.submitted" text="Username and password must be different">
+        </app-message>
     </div>
-
+    
     <button type="submit" class="btn btn-primary btn-block">Register</button>
 
     <p>Already a user?<a [routerLink]="['']"> Sign In!</a></p>
