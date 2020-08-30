@@ -15,7 +15,7 @@ import { PlatFormDetectorService } from "src/app/core";
 })
 export class Signup implements OnInit {
 
-    form: FormGroup;
+    signUpForm: FormGroup;
 
     @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
 
@@ -27,7 +27,7 @@ export class Signup implements OnInit {
         private platformDetectorService: PlatFormDetectorService) { }
 
     ngOnInit(): void {
-        this.form = this.formBuilder.group({
+        this.signUpForm = this.formBuilder.group({
             email:
                 [
                     '',
@@ -69,15 +69,17 @@ export class Signup implements OnInit {
     }
 
     signup() {
-        const newUser = this.form.getRawValue() as NewUser;
-        this.signupService
-            .signup(newUser)
-            .subscribe(
-                () => {
-                    this.router.navigate(['']);
-                },
-                err => console.log(err)
-            );
+        if (this.signUpForm.valid && !this.signUpForm.pending) {
+            const newUser = this.signUpForm.getRawValue() as NewUser;
+            this.signupService
+                .signup(newUser)
+                .subscribe(
+                    () => {
+                        this.router.navigate(['']);
+                    },
+                    err => console.log(err)
+                );
+        }
     }
     setFocus(): void {
         this.platformDetectorService.isPlatformBrowser()
