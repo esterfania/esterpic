@@ -35,7 +35,7 @@ export class PictureDetailsComponent implements OnInit {
             .subscribe(
                 () => {
                     this.alertService.success('Picture removed', true);
-                    this.router.navigate(['/user', this.userService.getUserName()])
+                    this.router.navigate(['/user', this.userService.getUserName()], {replaceUrl: true})
                 },
                 err => {
                     this.alertService.danger('An error occurred, please try again later!')
