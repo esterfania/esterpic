@@ -27,7 +27,7 @@ export class PictureDetailsComponent implements OnInit {
         this.pictures$ = this.pictureService.findById(this.pictureId);
         this.pictures$
             .subscribe(() => { },
-                err => this.router.navigate(['not-found']))
+                err => this.router.navigate(['error/not-found']))
     }
     remove() {
         this.pictureService

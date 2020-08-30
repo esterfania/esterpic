@@ -1,7 +1,17 @@
 <header class="fixed-top">
     <nav class="navbar navbar-light bg-white">
-        <a class="navbar-brand">ESTERPIC</a>
-
+        <a class="navbar-brand">
+            <i showIfLogged tabindex="0"
+                class="fa fa-bars mr-2" 
+                (keyup.space)="menu.toggle()" 
+                (click)="menu.toggle()"></i>
+            ESTERPIC
+        </a>
+        <app-menu #menu>
+            <ul>
+                <li>Item 1</li>
+            </ul>
+        </app-menu>
         <div *ngIf="(user$ | async) as user; else login;">
             <i class="fa fa-user-circle mr-1"></i>
             <a class="mr-1">{{user.name}}</a>
@@ -15,6 +25,8 @@
         </ng-template>
 
     </nav>
+    <app-loading></app-loading>
+
     <div class="float-right mr-2">
         <app-alert></app-alert>
     </div>

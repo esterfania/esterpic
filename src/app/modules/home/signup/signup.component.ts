@@ -1,12 +1,13 @@
 import { Component, ViewChild, ElementRef, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { lowerCaseValidator } from "src/app/shared/validators/lowerCase.validator";
 import { UserNotTakenValidatorService } from "./user-not-taken.validator.service";
 import { NewUser } from "./new-user";
 import { SignupService } from "./signup.service";
-import { Router } from "@angular/router";
 import { PlatFormDetectorService } from "src/app/core";
+import { userNamePassword } from "./username-password.validator";
 
 @Component({
     selector: 'app-signup',
@@ -15,7 +16,7 @@ import { PlatFormDetectorService } from "src/app/core";
 })
 export class Signup implements OnInit {
 
-    form: FormGroup;
+    signUpForm: FormGroup;
 
     @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
 
@@ -27,7 +28,7 @@ export class Signup implements OnInit {
         private platformDetectorService: PlatFormDetectorService) { }
 
     ngOnInit(): void {
-        this.form = this.formBuilder.group({
+        this.signUpForm = this.formBuilder.group({
             email:
                 [
                     '',
@@ -64,20 +65,26 @@ export class Signup implements OnInit {
                         Validators.maxLength(14)
                     ]
                 ]
-        });
+        },
+            {
+                validator: userNamePassword
+            }
+        );
         this.setFocus();
     }
 
     signup() {
-        const newUser = this.form.getRawValue() as NewUser;
-        this.signupService
-            .signup(newUser)
-            .subscribe(
-                () => {
-                    this.router.navigate(['']);
-                },
-                err => console.log(err)
-            );
+        if (this.signUpForm.valid && !this.signUpForm.pending) {
+            const newUser = this.signUpForm.getRawValue() as NewUser;
+            this.signupService
+                .signup(newUser)
+                .subscribe(
+                    () => {
+                        this.router.navigate(['']);
+                    },
+                    err => console.log(err)
+                );
+        }
     }
     setFocus(): void {
         this.platformDetectorService.isPlatformBrowser()

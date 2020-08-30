@@ -14,16 +14,25 @@ const routes: Routes = [
         component: PicutresListComponent,
         resolve: {
             pictures: PicturesListResolver
-        }        
-    },       
+        },
+        data: {
+            title: 'Timeline'
+        }
+    },
     {
         path: 'p/add',
         canActivate: [AuthGuard],
-        component: PicturesFormComponent
+        component: PicturesFormComponent,
+        data: {
+            title: 'Picture upload'
+        }
     },
     {
         path: 'p/:pictureId',
-        component: PictureDetailsComponent
+        component: PictureDetailsComponent,
+        data: {
+            title: 'Picture detail'
+        }
     },
 ];
 

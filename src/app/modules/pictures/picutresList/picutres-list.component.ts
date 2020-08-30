@@ -1,7 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 
 import { Picture } from 'src/app/models';
 import { PicturesService } from '../picture/picturesService/pictures.service';
@@ -11,11 +9,10 @@ import { PicturesService } from '../picture/picturesService/pictures.service';
   templateUrl: './picutres-list.component.html',
   styleUrls: ['./picutres-list.component.css']
 })
-export class PicutresListComponent implements OnInit, OnDestroy {
+export class PicutresListComponent implements OnInit {
 
   pictures: Picture[];
-  filter: string = '';
-  debounce: Subject<string> = new Subject<string>();
+  filter: string = '';  
   hasMore: boolean = true;
   currentPage: number = 1;
   userName: string = '';
@@ -27,21 +24,12 @@ export class PicutresListComponent implements OnInit, OnDestroy {
     this.getPictures();
   }
 
-  ngOnDestroy(): void {
-    this.debounce.unsubscribe();
-  }
-
   getPictures(): void {
     this.activatedRoute.params
       .subscribe(res => {
         this.userName = res.userName;
         this.pictures = this.activatedRoute.snapshot.data.pictures;
       });
-
-    this.debounce
-      .pipe(debounceTime(300))
-      .subscribe(filter => this.filter = filter);
-
   }
   load() {
     this.pictureService

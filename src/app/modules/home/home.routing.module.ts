@@ -14,11 +14,17 @@ const routes: Routes = [
         canActivate: [LoginGuard],
         children: [{
             path: '',
-            component: SigninComponent
+            component: SigninComponent,
+            data: {
+                title: 'Sign in'
+            }
         },
         {
             path: 'signup',
-            component: Signup
+            component: Signup,
+            data: {
+                title: 'Sign out'
+            }
         }]
     }
 ];
