@@ -19,7 +19,11 @@ export class AuthGuard implements CanActivate {
             this.userService.getUserName() == route.params.userName) {
             return true;
         }
-        this.router.navigate(['user', route.params.userName]);
+        this.router.navigate(['user', route.params.userName], {
+            queryParams:{
+                fromUrl: state.url
+            }
+        });
         return false;
     }
 }
