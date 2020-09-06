@@ -18,7 +18,7 @@ export class Signup implements OnInit {
 
     signUpForm: FormGroup;
 
-    @ViewChild('emailInput', { static: false }) emailInput: ElementRef<HTMLInputElement>;
+    @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
 
     constructor(
         private formBuilder: FormBuilder,
