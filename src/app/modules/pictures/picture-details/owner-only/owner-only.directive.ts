@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, Renderer, OnInit } from "@angular/core";
+import { Directive, Input, ElementRef, OnInit, Renderer2 } from "@angular/core";
 import { Picture } from "src/app/models";
 import { UserService } from "src/app/core/user/user.service";
 
@@ -11,7 +11,7 @@ export class OwnerOnlyDirective implements OnInit {
 
     constructor(
         private el: ElementRef<any>,
-        private renderer: Renderer,
+        private renderer: Renderer2,
         private userService: UserService) { }
 
     ngOnInit(): void {
@@ -19,7 +19,7 @@ export class OwnerOnlyDirective implements OnInit {
             .getUser()
             .subscribe(user => {
                 if(!user || user.id != this.ownedPicture.userId){
-                    this.renderer.setElementStyle(this.el.nativeElement, 'display', 'none')
+                    this.renderer.setStyle(this.el.nativeElement, 'display', 'none')
                 }
              });
     }

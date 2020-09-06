@@ -11,7 +11,7 @@ import { AuthService, PlatFormDetectorService } from "src/app/core/index";
 export class SigninComponent implements OnInit {
     fromUrl = '';
     loginForm: FormGroup
-    @ViewChild('userNameInput', { static: false }) userNameInput: ElementRef<HTMLInputElement>;
+    @ViewChild('userNameInput') userNameInput: ElementRef<HTMLInputElement>;
 
     constructor(
         private formBuilder: FormBuilder,
