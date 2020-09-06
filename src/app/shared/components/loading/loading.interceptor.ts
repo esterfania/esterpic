@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpInterceptorHandler, HttpInterceptor } from "@angular/common/http/src/interceptor";
+import { HttpInterceptor } from "@angular/common/http";
 import { HttpRequest, HttpHandler, HttpEvent, HttpEventType, HttpResponse, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpUserEvent } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
