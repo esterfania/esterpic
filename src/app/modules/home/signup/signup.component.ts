@@ -88,6 +88,6 @@ export class Signup implements OnInit {
     }
     setFocus(): void {
         this.platformDetectorService.isPlatformBrowser()
-            && this.emailInput.nativeElement.focus();
+            && this.emailInput?.nativeElement.focus();
     }
 }

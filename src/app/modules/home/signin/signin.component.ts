@@ -57,6 +57,6 @@ export class SigninComponent implements OnInit {
 
     setFocus(): void {
         this.platFormDetectorService.isPlatformBrowser() &&
-            this.userNameInput.nativeElement.focus();
+            this.userNameInput?.nativeElement.focus();
     }
 }
