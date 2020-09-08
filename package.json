@@ -1,13 +1,22 @@
 {
   "name": "esterpic",
   "version": "0.0.0",
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-jest.ts"
+    ]
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest -ci --runInBand",
+    "test:coverage": "jest --coverage"
   },
   "private": true,
   "dependencies": {
@@ -20,13 +29,10 @@
     "@angular/platform-browser": "^10.1.0",
     "@angular/platform-browser-dynamic": "^10.1.0",
     "@angular/router": "^10.1.0",
-    "@types/jest": "^26.0.13",
     "@types/stacktrace-js": "^2.0.3",
     "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
-    "jest": "^26.4.2",
-    "jest-preset-angular": "^8.3.1",
     "jwt-decode": "^2.2.0",
     "rxjs": "^6.6.3",
     "stacktrace-js": "^2.0.2",
@@ -37,8 +43,11 @@
     "@angular/cli": "~10.1.0",
     "@angular/compiler-cli": "^10.1.0",
     "@angular/language-service": "^10.1.0",
+    "@types/jest": "^26.0.13",
     "@types/node": "^14.6.4",
     "codelyzer": "^6.0.0",
+    "jest": "^26.4.2",
+    "jest-preset-angular": "^8.3.1",
     "node-sass": "^4.14.1",
     "protractor": "^7.0.0",
     "ts-node": "~5.0.1",
