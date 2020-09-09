@@ -22,7 +22,7 @@ export class SigninComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginForm = this.formBuilder.group({
-            username: ['', [Validators.required]],
+            userName: ['', [Validators.required]],
             password: ['', [Validators.required]]
         });
         this.setFocus();
@@ -35,17 +35,17 @@ export class SigninComponent implements OnInit {
 
     login(): void {
 
-        const username = this.loginForm.get('username').value;
+        const userName = this.loginForm.get('userName').value;
         const password = this.loginForm.get('password').value;
 
         this.authService
-            .authenticate(username, password)
+            .authenticate(userName, password)
             .subscribe(
                 res => {
                     if (this.fromUrl) {
                         this.route.navigateByUrl(this.fromUrl);
                     } else {
-                        this.route.navigate(['user', username])
+                        this.route.navigate(['user', userName])
                     }
                 },
                 err => {
