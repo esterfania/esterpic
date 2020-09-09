@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 
-import { lowerCaseValidator } from "src/app/shared/validators/lowerCase.validator";
+import { lowerCaseValidator } from "src/app/shared/validators/lower-case.validator";
 import { UserNotTakenValidatorService } from "./user-not-taken.validator.service";
 import { NewUser } from "./new-user";
 import { SignupService } from "./signup.service";
