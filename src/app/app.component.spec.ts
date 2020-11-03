@@ -1,20 +1,17 @@
-import { async, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { async, TestBed } from "@angular/core/testing";
+import { RouterTestingModule } from "@angular/router/testing";
 
-import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
+import { AppComponent } from "./app.component";
+import { CoreModule } from "./core/core.module";
 
-describe('AppComponent', () => {
+describe("AppComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        CoreModule,
-        RouterTestingModule.withRoutes([])
-      ],
-      declarations: [AppComponent]
+      imports: [CoreModule, RouterTestingModule.withRoutes([])],
+      declarations: [AppComponent],
     }).compileComponents();
   }));
-  it('should create the app', async(() => {
+  it("should create the app", async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
