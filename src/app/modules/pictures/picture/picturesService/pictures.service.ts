@@ -4,7 +4,7 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Picture } from 'src/app/models/index';
-import { PictureComment } from 'src/app/models/picture-comment';
+import { PictureComment } from 'src/app/models/picture-comment.model';
 import { environment } from '../../../../../environments/environment'
 
 const API = environment.apiUrl;
@@ -41,7 +41,7 @@ export class PicturesService {
 
     return this.http
       .post(
-        API + '/photos/upload', 
+        API + '/photos/upload',
         formData,
         {
           observe: 'events',

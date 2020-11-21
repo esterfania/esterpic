@@ -1,2 +1,3 @@
-export * from './picture';
-export * from './picture-comment';
+export * from './picture.model';
+export * from './alert.model'
+export * from './picture-comment.model';
